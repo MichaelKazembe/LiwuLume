@@ -1,0 +1,88 @@
+{
+  "data": [
+    {
+      "id": "65eec8e0b60e656b-01",
+      "dblId": "65eec8e0b60e656b",
+      "relatedDbl": null,
+      "name": "Free Bible Version",
+      "nameLocal": "Free Bible Version",
+      "abbreviation": "FBV",
+      "abbreviationLocal": "FBV",
+      "description": "Protestant FBV full 3.0 beta",
+      "descriptionLocal": "Protestant FBV full 3.0 beta",
+      "language": {
+        "id": "eng",
+        "name": "English",
+        "nameLocal": "English",
+        "script": "Latin",
+        "scriptDirection": "LTR"
+      },
+      "countries": [
+        {
+          "id": "US",
+          "name": "United States of America",
+          "nameLocal": "United States of America"
+        }
+      ],
+      "type": "text",
+      "updatedAt": "2025-09-28T19:49:40.000Z",
+      "audioBibles": []
+    },
+    {
+      "id": "de4e12af7f28f599-01",
+      "dblId": "de4e12af7f28f599",
+      "relatedDbl": null,
+      "name": "King James (Authorised) Version",
+      "nameLocal": "King James Version",
+      "abbreviation": "engKJV",
+      "abbreviationLocal": "KJV",
+      "description": "Ecumenical",
+      "descriptionLocal": "Ecumenical",
+      "language": {
+        "id": "eng",
+        "name": "English",
+        "nameLocal": "English",
+        "script": "Latin",
+        "scriptDirection": "LTR"
+      },
+      "countries": [
+        {
+          "id": "GB",
+          "name": "United Kingdom of Great Britain and Northern Ireland",
+          "nameLocal": "United Kingdom of Great Britain and Northern Ireland"
+        }
+      ],
+      "type": "text",
+      "updatedAt": "2024-06-29T04:03:56.000Z",
+      "audioBibles": []
+    },
+        {
+      "id": "de4e12af7f28f599-02",
+      "dblId": "de4e12af7f28f599",
+      "relatedDbl": null,
+      "name": "King James (Authorised) Version",
+      "nameLocal": "King James Version",
+      "abbreviation": "engKJV",
+      "abbreviationLocal": "KJV",
+      "description": "Protestant",
+      "descriptionLocal": "Protestant",
+      "language": {
+        "id": "eng",
+        "name": "English",
+        "nameLocal": "English",
+        "script": "Latin",
+        "scriptDirection": "LTR"
+      },
+      "countries": [
+        {
+          "id": "GB",
+          "name": "United Kingdom of Great Britain and Northern Ireland",
+          "nameLocal": "United Kingdom of Great Britain and Northern Ireland"
+        }
+      ],
+      "type": "text",
+      "updatedAt": "2025-10-01T18:54:59.000Z",
+      "audioBibles": []
+    }
+  ]
+}

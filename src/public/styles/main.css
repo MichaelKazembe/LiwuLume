@@ -1,0 +1,369 @@
+/* Import fonts (Montserrat for headings, Lora for body) */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;600;700&display=swap');
+
+/* Theme variables */
+:root {
+  --bg-main: white;
+  --bg-alt: #e0e0e0;
+  --text-color: #2c3e50;
+  --accent-color: #fbc66a;
+  --font-heading:
+    'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial;
+  --font-body: 'Lora', Georgia, 'Times New Roman', Times, serif;
+  --border-radius-sm: 0.125rem;
+  --border-radius-md: 0.25rem;
+  --border-radius-lg: 0.5rem;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+  --border-sm: 1px solid var(--bg-alt);
+  --border-md: 2px solid var(--text-color);
+  --border-lg: 4px solid var(--accent-color);
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background-color: var(--bg-main);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--text-color);
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+h3 {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-top: 0;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-color);
+}
+
+/* Buttons */
+.button-primary {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  margin: 1rem 0;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.button-primary:hover {
+  background-color: var(--text-color);
+  color: var(--accent-color);
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 2px solid var(--accent-color);
+  margin: 1rem 0;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.button-secondary:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+/* Sections */
+section {
+  padding: 2rem;
+  margin: 3rem auto;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  max-width: 1200px;
+}
+
+/* Hero Section */
+#hero {
+  text-align: center;
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Bible Versions Section */
+#version-list {
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.version-item {
+  /* background-color: var(--bg-main); */
+  padding: 1.5rem;
+  border: var(--border-sm);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease;
+}
+
+.version-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Books Section */
+#books {
+  padding: 2rem;
+  background-color: var(--bg-alt);
+  padding: 3rem;
+  max-width: 700px;
+  margin: 0 auto;
+
+}
+#book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  
+}
+
+.book-item {
+  background-color: var(--bg-main);
+  /* max-width: 100px; */
+  padding: 1rem;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.book-item:hover {
+  transform: translateY(-5px);
+}
+
+.book-item h4 {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.view-all {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* End of book */
+
+/* Daily Verse Section */
+
+.verse-card {
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.verse-image {
+  flex: 1;
+  overflow: hidden;
+}
+
+.verse-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 200px;
+}
+
+.verse-content {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.verse-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.verse-icon {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+
+.book-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.verse-reference {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.verse-text {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-style: italic;
+  margin: 1rem 0;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+.verse-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.save-verse {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.save-verse:hover {
+  color: var(--accent-color);
+}
+
+#read-full-chapter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .verse-card {
+    flex-direction: column;
+  }
+
+  .verse-image {
+    min-height: 150px;
+  }
+}
+
+/* end of daily verse section */
+
+/* Navigation */
+#nav {
+  background-color: white;
+  box-shadow: var(--shadow-md);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+.nav-links .active a {
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-bar input {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  min-width: 300px;
+}
+
+/* Footer */
+#footer {
+  background-color: white;
+  padding: 1.5rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+#footer p {
+  margin: 0;
+  color: var(--text-color);
+  font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  #version-list {
+    grid-template-columns: 1fr;
+  }
+
+  .search-bar input {
+    min-width: 200px;
+  }
+}
