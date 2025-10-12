@@ -12,7 +12,11 @@
       href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://kit.fontawesome.com/4ea4219760.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/4ea4219760.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./src/js/main.js"></script>
   </head>
   <body>
     <header id="header">
@@ -49,7 +53,7 @@
     <section id="bible-versions">
       <h2>Choose Your Bible Version</h2>
       <div id="version-list">
-        <div class="version-item">
+        <!-- <div class="version-item">
           <h3>King James Version (KJV)</h3>
           <p>
             A classic, revered for its poetic language and historical
@@ -74,7 +78,7 @@
             accessible.
           </p>
           <button class="button-primary">Select Version</button>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -82,7 +86,8 @@
     <section id="books">
       <h2>Explore the Books of the Bible</h2>
       <div id="book-list">
-        <div class="book-item">
+        <!-- Rendered book list dynamically -->
+        <!-- <div class="book-item">
           <h4>Genesis</h4>
         </div>
         <div class="book-item">
@@ -101,38 +106,40 @@
           <h4>Joshua</h4>
         </div>
       </div>
-      <div class="view-all">
-        <a id="view-all-books" class="button-secondary">View All Books</a>
+      <div class="view-all"> -->
+        <a id="view-all-books" class="button-secondary" >View All Books</a>
       </div>
     </section>
     <!-- Daily Verse Section -->
-<section id="daily-verse">
-  <h2>Daily Inspiration</h2>
-  <div class="verse-card">
-    <div class="verse-image">
-      <img src="./src/public/images/daily-verse.jpg" alt="Daily Verse Illustration" />
-    </div>
-    <div class="verse-content">
-      <div class="verse-header">
-        <i class="fas fa-bible verse-icon"></i>
-        <span class="book-title">Psalm</span>
-        <span class="verse-reference">119:105</span>
+    <section id="daily-verse">
+      <h2>Daily Inspiration</h2>
+      <div class="verse-card">
+        <div class="verse-image">
+          <img
+            src="./src/public/images/daily-verse.jpg"
+            alt="Daily Verse Illustration"
+          />
+        </div>
+        <div class="verse-content">
+          <div class="verse-header">
+            <i class="fas fa-bible verse-icon"></i>
+            <span class="book-title">Psalm</span>
+            <span class="verse-reference">119:105</span>
+          </div>
+          <blockquote class="verse-text">
+            "Your word is a lamp to my feet and a light to my path."
+          </blockquote>
+          <div class="verse-actions">
+            <button class="save-verse">
+              <i class="far fa-heart"></i>
+            </button>
+            <a id="read-full-chapter" class="button-secondary">
+              <i class="fas fa-book"></i> Read Full Chapter
+            </a>
+          </div>
+        </div>
       </div>
-      <blockquote class="verse-text">
-        "Your word is a lamp to my feet and a light to my path."
-      </blockquote>
-      <div class="verse-actions">
-        <button class="save-verse">
-          <i class="far fa-heart"></i>
-        </button>
-        <a id="read-full-chapter" class="button-secondary">
-          <i class="fas fa-book"></i> Read Full Chapter
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <footer id="footer">
       <p>&copy; 2025 LiwuLume. All rights reserved.</p>

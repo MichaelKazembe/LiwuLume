@@ -90,6 +90,7 @@ p {
 }
 
 .button-secondary {
+  align-items: center;
   background-color: transparent;
   color: var(--text-color);
   border: 2px solid var(--accent-color);
@@ -146,18 +147,17 @@ section {
 
 /* Books Section */
 #books {
+  align-items: center;
   padding: 2rem;
   background-color: var(--bg-alt);
   padding: 3rem;
   max-width: 700px;
   margin: 0 auto;
-
 }
 #book-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
-  
 }
 
 .book-item {
@@ -181,6 +181,7 @@ section {
 }
 
 .view-all {
+  /* display: none; */
   text-align: center;
   margin-top: 2rem;
 }

@@ -1,10 +1,17 @@
-import '../styles/main.css';
+// main.js
+import {
+  renderBibleVersions,
+  renderBooks,
+  renderChapters,
+  renderAllBooks,
+} from './ui.js';
 
-const app = document.getElementById('app');
-app.textContent = 'Welcome to LiwuLume - Bible App';
-
-// Hot Module Replacement (HMR) - Accept updates for this module
-
-if (import.meta.hot) {
-  import.meta.hot.accept();
-}
+// Initialize the app when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  renderBibleVersions();
+  renderBooks(
+    localStorage.getItem('selectedBibleVersion') || 'de4e12af7f28f599-02'
+  ); // Default to KJV if none selected
+  // renderChapters();
+  // renderAllBooks();
+});
