@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorites | LiwuLume</title>
+    <meta name="description" content="LiwuLume - Bible App Favorites" />
+    <link rel="stylesheet" href="../public/styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/4ea4219760.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="../js/favorites-page.js"></script>
+  </head>
+  <body>
+    <header id="header">
+      <nav id="nav">
+        <div class="nav-container">
+          <a href="../index.html" class="nav-logo">
+            <i class="fas fa-bible"></i>
+            LiwuLume
+          </a>
+          <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li class="active"><a href="./favourite.html">Favorites</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Favorites Section -->
+    <section id="favorites-section">
+      <h2>Your Favorite Verses</h2>
+      <div id="favorites-grid" class="favorites-grid">
+        <!-- Favorites will be dynamically inserted here -->
+      </div>
+      <div id="no-favorites" class="no-favorites" style="display: none;">
+        <i class="fas fa-heart-broken"></i>
+        <h3>No favorites yet</h3>
+        <p>Start exploring the Bible and save verses that inspire you!</p>
+        <a href="../index.html" class="button-primary">Explore Verses</a>
+      </div>
+    </section>
+
+    <script src="http://cdn.scipture.api.bible/fums/fumsv2.min.js"></script>
+    <footer id="footer">
+      <p>&copy; 2025 LiwuLume. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize the tabbed interface
   initializeTabs();
 
+  // Check if we're on the favorites page and handle URL parameters
+  if (window.location.pathname.includes('favourite.html')) {
+    handleFavoritesPageLoad();
+  }
+
   // Add loading state styles (if not already in CSS)
   const style = document.createElement('style');
   style.textContent = `
@@ -32,3 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(fontAwesome);
   }
 });
+
+// Handle favorites page specific functionality
+function handleFavoritesPageLoad() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const bookId = urlParams.get('book');
+  const chapter = urlParams.get('chapter');
+
+  if (bookId && chapter) {
+    // If coming from favorites page with book/chapter params,
+    // we could auto-navigate to that chapter, but for now just clean the URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+}
