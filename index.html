@@ -21,11 +21,16 @@
   <body>
     <header id="header">
       <nav id="nav">
-        <h1>LiwuLume</h1>
-        <ul class="nav-links">
-          <li class="active"><a href="#home">Home</a></li>
-          <li><a href="#favorites">Favorites</a></li>
-        </ul>
+        <div class="nav-container">
+          <a href="#" class="nav-logo">
+            <i class="fas fa-bible"></i>
+            LiwuLume
+          </a>
+          <ul class="nav-links">
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#favorites">Favorites</a></li>
+          </ul>
+        </div>
         <div class="search-bar">
           <input
             type="text"
@@ -34,6 +39,7 @@
           />
           <button id="search-button" class="button-primary">Search</button>
         </div>
+        <i class="fas fa-search mobile-search-icon"></i>
       </nav>
     </header>
 
@@ -46,68 +52,52 @@
       </p>
       <button class="button-primary">Start Your Journey</button>
     </section>
-
+    
     <!-- Daily Verse Section -->
     <section id="daily-verse">
       <h2>Daily Inspiration</h2>
       <div class="verse-card">
         <div class="verse-content">
-          <div class="verse-header">
-            <i class="fas fa-bible verse-icon"></i>
-            <span class="book-title">Psalm</span>
-            <span class="verse-reference">119:105</span>
-          </div>
-          <blockquote class="verse-text">
-            "Your word is a lamp to my feet and a light to my path."
-          </blockquote>
-          <div class="verse-actions">
-            <button class="save-verse">
-              <i class="far fa-heart"></i>
-            </button>
-            <a id="read-full-chapter" class="button-secondary">
-              <i class="fas fa-book"></i> Read Full Chapter
-            </a>
-          </div>
+          <!-- Content will be dynamically inserted here -->
         </div>
       </div>
     </section>
 
-<!-- Bible Tabs Section -->
-<section id="bible-tabs">
-  <div class="tabs-header">
-    <div class="tab active" data-version-id="de4e12af7f28f599-02">KJV</div>
-    <div class="tab" data-version-id="9879dbb7cfe39e4d-04">WEB</div>
-    <div class="tab" data-version-id="bba9f40183526463-01">BSB</div>
-    <div class="tab" data-version-id="06125adad2d5898a-01">ASV</div>
-  </div>
-  <div class="tabs-content">
-    <div class="tab-pane active" data-version-id="de4e12af7f28f599-02">
-      <div id="book-list"></div>
-      <div id="chapter-list" style="display: none;"></div>
-      <div id="verse-list" style="display: none;"></div>
-      <div id="verse-content" style="display: none;"></div>
-    </div>
-    <div class="tab-pane" data-version-id="9879dbb7cfe39e4d-04">
-      <div id="book-list"></div>
-      <div id="chapter-list" style="display: none;"></div>
-      <div id="verse-list" style="display: none;"></div>
-      <div id="verse-content" style="display: none;"></div>
-    </div>
-    <div class="tab-pane" data-version-id="bba9f40183526463-01">
-      <div id="book-list"></div>
-      <div id="chapter-list" style="display: none;"></div>
-      <div id="verse-list" style="display: none;"></div>
-      <div id="verse-content" style="display: none;"></div>
-    </div>
-    <div class="tab-pane" data-version-id="06125adad2d5898a-01">
-      <div id="book-list"></div>
-      <div id="chapter-list" style="display: none;"></div>
-      <div id="verse-list" style="display: none;"></div>
-      <div id="verse-content" style="display: none;"></div>
-    </div>
-  </div>
-</section>
-
+    <!-- Bible Tabs Section -->
+    <section id="bible-tabs">
+      <div class="tabs-header">
+        <div class="tab active" data-version-id="de4e12af7f28f599-02">KJV</div>
+        <div class="tab" data-version-id="9879dbb7cfe39e4d-04">WEB</div>
+        <div class="tab" data-version-id="bba9f40183526463-01">BSB</div>
+        <div class="tab" data-version-id="06125adad2d5898a-01">ASV</div>
+      </div>
+      <div class="tabs-content">
+        <div class="tab-pane active" data-version-id="de4e12af7f28f599-02">
+          <div id="book-list"></div>
+          <div id="chapter-list" style="display: none"></div>
+          <div id="verse-list" style="display: none"></div>
+          <div id="verse-content" style="display: none"></div>
+        </div>
+        <div class="tab-pane" data-version-id="9879dbb7cfe39e4d-04">
+          <div id="book-list"></div>
+          <div id="chapter-list" style="display: none"></div>
+          <div id="verse-list" style="display: none"></div>
+          <div id="verse-content" style="display: none"></div>
+        </div>
+        <div class="tab-pane" data-version-id="bba9f40183526463-01">
+          <div id="book-list"></div>
+          <div id="chapter-list" style="display: none"></div>
+          <div id="verse-list" style="display: none"></div>
+          <div id="verse-content" style="display: none"></div>
+        </div>
+        <div class="tab-pane" data-version-id="06125adad2d5898a-01">
+          <div id="book-list"></div>
+          <div id="chapter-list" style="display: none"></div>
+          <div id="verse-list" style="display: none"></div>
+          <div id="verse-content" style="display: none"></div>
+        </div>
+      </div>
+    </section>
 
     <script src="http://cdn.scipture.api.bible/fums/fumsv2.min.js"></script>
     <footer id="footer">
