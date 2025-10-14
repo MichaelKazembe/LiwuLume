@@ -7,19 +7,15 @@
   --bg-alt: #e0e0e0;
   --text-color: #2c3e50;
   --accent-color: #fbc66a;
-  --font-heading:
-    'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial;
+  --font-heading: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   --font-body: 'Lora', Georgia, 'Times New Roman', Times, serif;
   --border-radius-sm: 0.125rem;
   --border-radius-md: 0.25rem;
   --border-radius-lg: 0.5rem;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
   --border-sm: 1px solid var(--bg-alt);
   --border-md: 2px solid var(--text-color);
-  --border-lg: 4px solid var(--accent-color);
 }
 
 /* Global styles */
@@ -29,20 +25,14 @@
   padding: 0;
 }
 
-html,
-body {
+html, body {
   background-color: var(--bg-main);
   color: var(--text-color);
   font-family: var(--font-body);
   line-height: 1.6;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--text-color);
   margin-top: 0;
@@ -58,6 +48,7 @@ h2 {
   margin-bottom: 1.5rem;
   text-align: center;
 }
+
 h3 {
   font-size: 0.85rem;
   margin-bottom: 1rem;
@@ -124,72 +115,7 @@ section {
   margin-bottom: 2rem;
 }
 
-/* Bible Versions Section */
-#version-list {
-  display: grid;
-  text-align: center;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-}
-
-.version-item {
-  /* background-color: var(--bg-main); */
-  padding: 1.5rem;
-  border: var(--border-sm);
-  border-radius: var(--border-radius-md);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease;
-}
-
-.version-item:hover {
-  transform: translateY(-5px);
-}
-
-/* Books Section */
-#books {
-  align-items: center;
-  padding: 2rem;
-  background-color: var(--bg-alt);
-  padding: 3rem;
-  max-width: 700px;
-  margin: 0 auto;
-}
-#book-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-}
-
-.book-item {
-  background-color: var(--bg-main);
-  /* max-width: 100px; */
-  padding: 1rem;
-  border-radius: var(--border-radius-md);
-  box-shadow: var(--shadow-sm);
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.book-item:hover {
-  transform: translateY(-5px);
-}
-
-.book-item h4 {
-  margin: 0;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.view-all {
-  /* display: none; */
-  text-align: center;
-  margin-top: 2rem;
-}
-
-/* End of book */
-
 /* Daily Verse Section */
-
 .verse-card {
   background-color: white;
   border-radius: var(--border-radius-md);
@@ -198,18 +124,6 @@ section {
   display: flex;
   max-width: 800px;
   margin: 0 auto;
-}
-
-.verse-image {
-  flex: 1;
-  overflow: hidden;
-}
-
-.verse-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  min-height: 200px;
 }
 
 .verse-content {
@@ -278,20 +192,7 @@ section {
   gap: 0.5rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .verse-card {
-    flex-direction: column;
-  }
-
-  .verse-image {
-    min-height: 150px;
-  }
-}
-
-/* end of daily verse section */
-
-/* Navigation */
+/* Navigation - Updated for responsiveness */
 #nav {
   background-color: white;
   box-shadow: var(--shadow-md);
@@ -302,6 +203,22 @@ section {
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  text-decoration: none;
 }
 
 .nav-links {
@@ -326,18 +243,39 @@ section {
   border-bottom: 2px solid var(--accent-color);
 }
 
-/* Search Bar */
+/* Desktop Search Bar - Updated for modern UI */
 .search-bar {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 
 .search-bar input {
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   border: 1px solid #ddd;
   border-radius: var(--border-radius-md);
-  font-size: 0.85rem;
-  min-width: 200px;
+  font-size: 0.9rem;
+  min-width: 300px;
+  transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(251, 198, 106, 0.2);
+}
+
+.search-bar button {
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius-md);
+}
+
+/* Mobile Search Icon */
+.mobile-search-icon {
+  display: none;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  cursor: pointer;
 }
 
 /* Footer */
@@ -352,52 +290,6 @@ section {
   margin: 0;
   color: var(--text-color);
   font-size: 0.875rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-
-  #version-list {
-    grid-template-columns: 1fr;
-  }
-
-  .search-bar input {
-    min-width: 200px;
-  }
-}
-
-
-/* Verse Numbers */
-#verse-numbers {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.verse-number-item {
-  padding: 0.5rem;
-  background-color: var(--bg-alt);
-  border-radius: var(--border-radius-sm);
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.verse-number-item:hover {
-  background-color: var(--accent-color);
-  color: var(--text-color);
-}
-
-/* Verse Content */
-#verse-content {
-  padding: 1rem;
-  background-color: white;
-  border-radius: var(--border-radius-md);
-  box-shadow: var(--shadow-sm);
 }
 
 /* Bible Tabs */
@@ -422,9 +314,7 @@ section {
   cursor: pointer;
   background-color: var(--bg-alt);
   color: var(--text-color);
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .tab.active {
@@ -452,6 +342,7 @@ section {
 .book-item {
   padding: 1rem;
   background-color: var(--bg-main);
+  border: var(--border-sm);
   border-radius: var(--border-radius-sm);
   text-align: center;
   cursor: pointer;
@@ -461,6 +352,12 @@ section {
 .book-item:hover {
   background-color: var(--accent-color);
   color: var(--text-color);
+}
+
+.book-item h4 {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 #chapter-list {
@@ -473,6 +370,7 @@ section {
 .chapter-item {
   padding: 0.5rem;
   background-color: var(--bg-main);
+  border: var(--border-sm);
   border-radius: var(--border-radius-sm);
   text-align: center;
   cursor: pointer;
@@ -485,65 +383,6 @@ section {
 }
 
 #verse-list {
-  padding: 1rem;
-  background-color: var(--bg-main);
-
-  border-radius: var(--border-radius-sm);
-}
-
-.verse-item {
-  color: var(--text-color);
-  padding: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.verse-item:hover {
-  background-color: var(--accent-color);
-  color: var(--text-color);
-}
-.verse-item.active {
-  background-color: var(--accent-color);
-  color: var(--text-color);
-  font-weight: 600;
-}
-
-.verse-content-container {
-  padding: 1rem;
-  background-color: white;
-  border-radius: var(--border-radius-md);
-  box-shadow: var(--shadow-sm);
-}
-
-.verse-content-container p {
-  margin: 0.5rem 0;
-  line-height: 1.6;
-  font-family: var(--font-body);
-  font-size: 1rem;
-}
-
-.verse-content-container .v {
-  font-weight: bold;
-  color: var(--accent-color);
-  margin-right: 0.5rem;
-}
-
-.verse-content-container .add {
-  font-style: italic;
-  color: #666;
-}
-
-.back-to-verses {
-  margin-top: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Add these to your main.css */
-
-/* Verse List */
-#verse-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 0.5rem;
@@ -553,6 +392,7 @@ section {
 .verse-item {
   padding: 0.5rem;
   background-color: var(--bg-main);
+  border: var(--border-sm);
   border-radius: var(--border-radius-sm);
   text-align: center;
   cursor: pointer;
@@ -564,7 +404,6 @@ section {
   color: var(--text-color);
 }
 
-/* Verse Content */
 .verse-content-container {
   padding: 1rem;
   background-color: white;
@@ -612,4 +451,27 @@ section {
 
 .error {
   color: #d32f2f;
+}
+
+/* Responsive Design - Updated for navbar */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .search-bar {
+    display: none;
+  }
+
+  .mobile-search-icon {
+    display: block;
+  }
+
+  #version-list {
+    grid-template-columns: 1fr;
+  }
+
+  .verse-card {
+    flex-direction: column;
+  }
 }

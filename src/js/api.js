@@ -1,12 +1,30 @@
 // api.js
 const BASE_URL = 'https://api.scripture.api.bible/v1/';
+const API_KEY = import.meta.env.VITE_API_KEY;
+
+// Fetches a random daily verse
+async function fetchDailyVerse() {
+  try {
+    const DAILY_VERSE_URL = 'https://bible-api.com/data/web/random';
+    const response = await fetch(DAILY_VERSE_URL);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch daily verse: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.random_verse;
+  } catch (error) {
+    console.error('Error fetching daily verse:', error);
+    return null;
+  }
+}
 
 // Fetches a list of available English Bible translations
 async function fetchEnglishTranslations() {
   try {
     const response = await fetch(`${BASE_URL}bibles`, {
       headers: {
-        'api-key': 'ac1088740a1e4f1b145827d3eeb1e8b3',
+        'api-key': API_KEY,
       },
     });
 
@@ -43,7 +61,7 @@ async function fetchBooks(versionId) {
   try {
     const response = await fetch(`${BASE_URL}bibles/${versionId}/books`, {
       headers: {
-        'api-key': 'ac1088740a1e4f1b145827d3eeb1e8b3',
+        'api-key': API_KEY,
       },
     });
 
@@ -66,7 +84,7 @@ async function fetchChapters(versionId, bookId) {
       `${BASE_URL}bibles/${versionId}/books/${bookId}/chapters`,
       {
         headers: {
-          'api-key': 'ac1088740a1e4f1b145827d3eeb1e8b3',
+          'api-key': API_KEY,
         },
       }
     );
@@ -90,7 +108,7 @@ async function fetchChapterWithVerses(versionId, chapterId) {
       `${BASE_URL}bibles/${versionId}/chapters/${chapterId}`,
       {
         headers: {
-          'api-key': 'ac1088740a1e4f1b145827d3eeb1e8b3',
+          'api-key': API_KEY,
         },
       }
     );
@@ -114,7 +132,7 @@ async function fetchVerse(versionId, verseId) {
       `${BASE_URL}bibles/${versionId}/verses/${verseId}`,
       {
         headers: {
-          'api-key': 'ac1088740a1e4f1b145827d3eeb1e8b3',
+          'api-key': API_KEY,
         },
       }
     );
@@ -137,4 +155,5 @@ export {
   fetchChapters,
   fetchChapterWithVerses,
   fetchVerse,
+  fetchDailyVerse,
 };

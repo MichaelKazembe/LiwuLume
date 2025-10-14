@@ -5,6 +5,7 @@ import {
   fetchChapters,
   fetchChapterWithVerses,
   fetchVerse,
+  fetchDailyVerse,
 } from './api.js';
 
 // Global variables to track the current state
@@ -40,6 +41,7 @@ function initializeTabs() {
 
   // Initialize with KJV as the default
   renderBooks(currentVersionId);
+  renderDailyVerse(); // Load the daily verse
 }
 
 // Render books for the selected version
@@ -273,6 +275,87 @@ async function renderVerseContent(versionId, verseId, tabPane, chapterContent) {
   }
 }
 
+// Render daily verse
+async function renderDailyVerse() {
+  try {
+    const verseCard = document.querySelector('.verse-card');
+    if (!verseCard) return;
+
+    const verseContent = verseCard.querySelector('.verse-content');
+    if (!verseContent) return;
+
+    // Show loading state
+    verseContent.innerHTML = '<p class="loading">Loading daily verse...</p>';
+
+    const dailyVerse = await fetchDailyVerse();
+
+    // Check if dailyVerse is valid
+    if (!dailyVerse || !dailyVerse.text) {
+      throw new Error('Invalid daily verse data');
+    }
+
+    // Format the verse text with line breaks if text exists
+    const formattedText = dailyVerse.text
+      ? dailyVerse.text.replace(/\n/g, '<br>')
+      : 'Verse text not available';
+
+    // Update the verse content
+    verseContent.innerHTML = `
+      <div class="verse-header">
+        <i class="fas fa-bible verse-icon"></i>
+        <span class="book-title">${dailyVerse.book || 'Unknown Book'}</span>
+        <span class="verse-reference">${dailyVerse.chapter || '?'}:${dailyVerse.verse || '?'}</span>
+      </div>
+      <blockquote class="verse-text">${formattedText}</blockquote>
+      <div class="verse-actions">
+        <button class="save-verse">
+          <i class="far fa-heart"></i>
+        </button>
+        <a id="read-full-chapter" class="button-secondary">
+          <i class="fas fa-book"></i> Read Full Chapter
+        </a>
+      </div>
+    `;
+
+    // Add click event to "Read Full Chapter" button
+    const readFullChapterBtn = verseCard.querySelector('#read-full-chapter');
+    if (readFullChapterBtn && dailyVerse.bookId) {
+      readFullChapterBtn.addEventListener('click', () => {
+        // Find the active tab and render the chapter
+        const activeTab = document.querySelector('.tab.active');
+        if (activeTab) {
+          const versionId = activeTab.getAttribute('data-version-id');
+          renderChapters(
+            versionId,
+            dailyVerse.bookId,
+            document.querySelector('.tab-pane.active')
+          );
+        }
+      });
+    }
+  } catch (error) {
+    console.error('Error rendering daily verse:', error);
+    const verseContent = document.querySelector('.verse-content');
+    if (verseContent) {
+      verseContent.innerHTML = `
+        <div class="verse-header">
+          <i class="fas fa-bible verse-icon"></i>
+          <span class="book-title">Daily Verse</span>
+        </div>
+        <blockquote class="verse-text">
+          "Your word is a lamp to my feet and a light to my path." - Psalm 119:105
+        </blockquote>
+        <div class="verse-actions">
+          <button class="save-verse">
+            <i class="far fa-heart"></i>
+          </button>
+        </div>
+        <p class="error">Failed to load today's verse. Showing a default verse instead.</p>
+      `;
+    }
+  }
+}
+
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
   initializeTabs();
@@ -284,4 +367,5 @@ export {
   renderChapters,
   renderVerses,
   renderVerseContent,
+  renderDailyVerse,
 };
