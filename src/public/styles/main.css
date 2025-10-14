@@ -7,7 +7,9 @@
   --bg-alt: #e0e0e0;
   --text-color: #2c3e50;
   --accent-color: #fbc66a;
-  --font-heading: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-heading:
+    'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial;
   --font-body: 'Lora', Georgia, 'Times New Roman', Times, serif;
   --border-radius-sm: 0.125rem;
   --border-radius-md: 0.25rem;
@@ -25,14 +27,20 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   background-color: var(--bg-main);
   color: var(--text-color);
   font-family: var(--font-body);
   line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   color: var(--text-color);
   margin-top: 0;
@@ -124,6 +132,8 @@ section {
   display: flex;
   max-width: 800px;
   margin: 0 auto;
+  /* Card flip animation */
+  perspective: 1000px;
 }
 
 .verse-content {
@@ -132,6 +142,13 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.verse-card:hover .verse-content {
+  transform: rotateY(10deg);
 }
 
 .verse-header {
@@ -146,24 +163,24 @@ section {
   font-size: 1.2rem;
 }
 
-.book-title {
+.book-title,
+.verse-reference {
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 1.1rem;
-}
-
-.verse-reference {
-  color: #666;
-  font-size: 0.9rem;
 }
 
 .verse-text {
   font-family: var(--font-body);
   font-size: 1.25rem;
   font-style: italic;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   line-height: 1.5;
-  color: var(--text-color);
+  color: #666;
+}
+
+.fa-heart {
+  color: #666;
 }
 
 .verse-actions {
@@ -179,26 +196,32 @@ section {
   cursor: pointer;
   color: #ccc;
   font-size: 1.2rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .save-verse:hover {
   color: var(--accent-color);
+  transform: scale(1.2);
 }
 
 #read-full-chapter {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  transition: all 0.3s ease;
 }
 
-/* Navigation - Updated for responsiveness */
+#read-full-chapter:hover {
+  transform: translateX(5px);
+}
+
+/* Navigation */
 #nav {
-  background-color: white;
+  background-color: var(--accent-color);
   box-shadow: var(--shadow-md);
   padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
   align-items: center;
   position: sticky;
   top: 0;
@@ -208,7 +231,10 @@ section {
 .nav-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .nav-logo {
@@ -219,6 +245,11 @@ section {
   font-weight: 700;
   color: var(--text-color);
   text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
 }
 
 .nav-links {
@@ -228,34 +259,77 @@ section {
 }
 
 .nav-links a {
+  font-family: var(--font-heading);
   text-decoration: none;
   color: var(--text-color);
-  font-weight: 600;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .nav-links a:hover {
-  color: var(--accent-color);
+  color: var(--bg-main);
+  font-weight: 600;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--bg-main);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .nav-links .active a {
-  color: var(--accent-color);
-  border-bottom: 2px solid var(--accent-color);
+  font-weight: 600;
+  text-decoration: underline;
 }
 
-/* Desktop Search Bar - Updated for modern UI */
+/* Search Section - Improved */
+#search-section {
+  background-color: var(--bg-alt);
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  max-width: 800px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+#search-section:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.search-title {
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-family: var(--font-heading);
+}
+
 .search-bar {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .search-bar input {
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1.25rem;
   border: 1px solid #ddd;
   border-radius: var(--border-radius-md);
   font-size: 0.9rem;
-  min-width: 300px;
+  width: 100%;
   transition: all 0.3s ease;
 }
 
@@ -263,19 +337,30 @@ section {
   outline: none;
   border-color: var(--accent-color);
   box-shadow: 0 0 0 2px rgba(251, 198, 106, 0.2);
+  transform: scale(1.01);
 }
 
 .search-bar button {
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1.5rem;
   border-radius: var(--border-radius-md);
+  transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+  transform: scale(1.05);
 }
 
 /* Mobile Search Icon */
 .mobile-search-icon {
   display: none;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: var(--text-color);
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-search-icon:hover {
+  transform: scale(1.2);
 }
 
 /* Footer */
@@ -292,7 +377,7 @@ section {
   font-size: 0.875rem;
 }
 
-/* Bible Tabs */
+/* Bible Tabs - With animation */
 #bible-tabs {
   max-width: 1200px;
   margin: 2rem auto;
@@ -300,6 +385,11 @@ section {
   border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-md);
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+#bible-tabs:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 .tabs-header {
@@ -314,7 +404,23 @@ section {
   cursor: pointer;
   background-color: var(--bg-alt);
   color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.tab:hover::after {
+  width: 100%;
 }
 
 .tab.active {
@@ -323,9 +429,23 @@ section {
   font-weight: 600;
 }
 
+.tab.active::after {
+  width: 100%;
+}
+
 .tab-pane {
   display: none;
   padding: 1rem;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .tab-pane.active {
@@ -346,12 +466,14 @@ section {
   border-radius: var(--border-radius-sm);
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
 }
 
 .book-item:hover {
   background-color: var(--accent-color);
   color: var(--text-color);
+  transform: translateY(-5px) rotateX(5deg);
 }
 
 .book-item h4 {
@@ -362,24 +484,25 @@ section {
 
 #chapter-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
 .chapter-item {
-  padding: 0.5rem;
+  padding: 0.75rem;
   background-color: var(--bg-main);
   border: var(--border-sm);
   border-radius: var(--border-radius-sm);
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .chapter-item:hover {
   background-color: var(--accent-color);
   color: var(--text-color);
+  transform: scale(1.05);
 }
 
 #verse-list {
@@ -396,12 +519,13 @@ section {
   border-radius: var(--border-radius-sm);
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .verse-item:hover {
   background-color: var(--accent-color);
   color: var(--text-color);
+  transform: scale(1.05);
 }
 
 .verse-content-container {
@@ -410,6 +534,18 @@ section {
   border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-sm);
   margin-bottom: 1rem;
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .verse-content-container p {
@@ -435,10 +571,16 @@ section {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.back-to-verses:hover {
+  transform: translateX(-5px);
 }
 
 /* Loading and Error States */
-.loading, .error {
+.loading,
+.error {
   text-align: center;
   padding: 1rem;
   grid-column: 1 / -1;
@@ -453,25 +595,34 @@ section {
   color: #d32f2f;
 }
 
-/* Responsive Design - Updated for navbar */
+/* Responsive Design */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
+  #nav {
+    padding: 1rem;
   }
 
-  .search-bar {
-    display: none;
+  .nav-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
   }
 
-  .mobile-search-icon {
-    display: block;
+  #search-section {
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  .verse-card {
+    flex-direction: column;
   }
 
   #version-list {
     grid-template-columns: 1fr;
   }
 
-  .verse-card {
-    flex-direction: column;
+  .tab {
+    padding: 0.75rem;
+    font-size: 0.85rem;
   }
 }

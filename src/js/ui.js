@@ -308,9 +308,9 @@ async function renderDailyVerse() {
       </div>
       <blockquote class="verse-text">${formattedText}</blockquote>
       <div class="verse-actions">
-        <button class="save-verse">
+        <div class="save-verse">
           <i class="far fa-heart"></i>
-        </button>
+        </div>
         <a id="read-full-chapter" class="button-secondary">
           <i class="fas fa-book"></i> Read Full Chapter
         </a>

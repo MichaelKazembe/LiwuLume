@@ -1,7 +1,9 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home | LiwuLume</title>
     <meta name="description" content="LiwuLume - Bible App" />
@@ -27,19 +29,10 @@
             LiwuLume
           </a>
           <ul class="nav-links">
-            <li class="active"><a href="#home">Home</a></li>
-            <li><a href="#favorites">Favorites</a></li>
+            <li class="active"><a href="./index.html">Home</a></li>
+            <li><a href="/src/pages/favourite.html">Favorites</a></li>
           </ul>
         </div>
-        <div class="search-bar">
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Search for verses, keywords, or topics..."
-          />
-          <button id="search-button" class="button-primary">Search</button>
-        </div>
-        <i class="fas fa-search mobile-search-icon"></i>
       </nav>
     </header>
 
@@ -52,7 +45,7 @@
       </p>
       <button class="button-primary">Start Your Journey</button>
     </section>
-    
+
     <!-- Daily Verse Section -->
     <section id="daily-verse">
       <h2>Daily Inspiration</h2>
@@ -60,6 +53,19 @@
         <div class="verse-content">
           <!-- Content will be dynamically inserted here -->
         </div>
+      </div>
+    </section>
+
+    <!-- Search Section -->
+    <section id="search-section">
+      <div class="search-bar">
+        <label for="search-input">Search Scriptures</label>
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search for verses, keywords, or topics..."
+        />
+        <button id="search-button" class="button-primary">Search</button>
       </div>
     </section>
 
