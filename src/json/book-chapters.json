@@ -1,0 +1,295 @@
+// BOOK CHAPTERS
+// Gets an array of Chapter objects for a given bibleId and bookId
+// https://api.biblia.com/v1/bibles/{bibleId}/chapters
+// http://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-01/chapters
+{
+  "data": [
+    {
+      "id": "EXO.intro",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "intro",
+      "reference": "Exodus"
+    },
+    {
+      "id": "EXO.1",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "1",
+      "reference": "Exodus 1"
+    },
+    {
+      "id": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "2",
+      "reference": "Exodus 2"
+    },
+    {
+      "id": "EXO.3",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "3",
+      "reference": "Exodus 3"
+    },
+    {
+      "id": "EXO.4",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "4",
+      "reference": "Exodus 4"
+    },
+    {
+      "id": "EXO.5",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "5",
+      "reference": "Exodus 5"
+    },
+    {
+      "id": "EXO.6",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "6",
+      "reference": "Exodus 6"
+    },
+    {
+      "id": "EXO.7",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "7",
+      "reference": "Exodus 7"
+    },
+    {
+      "id": "EXO.8",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "8",
+      "reference": "Exodus 8"
+    },
+    {
+      "id": "EXO.9",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "9",
+      "reference": "Exodus 9"
+    },
+    {
+      "id": "EXO.10",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "10",
+      "reference": "Exodus 10"
+    },
+    {
+      "id": "EXO.11",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "11",
+      "reference": "Exodus 11"
+    },
+    {
+      "id": "EXO.12",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "12",
+      "reference": "Exodus 12"
+    },
+    {
+      "id": "EXO.13",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "13",
+      "reference": "Exodus 13"
+    },
+    {
+      "id": "EXO.14",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "14",
+      "reference": "Exodus 14"
+    },
+    {
+      "id": "EXO.15",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "15",
+      "reference": "Exodus 15"
+    },
+    {
+      "id": "EXO.16",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "16",
+      "reference": "Exodus 16"
+    },
+    {
+      "id": "EXO.17",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "17",
+      "reference": "Exodus 17"
+    },
+    {
+      "id": "EXO.18",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "18",
+      "reference": "Exodus 18"
+    },
+    {
+      "id": "EXO.19",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "19",
+      "reference": "Exodus 19"
+    },
+    {
+      "id": "EXO.20",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "20",
+      "reference": "Exodus 20"
+    },
+    {
+      "id": "EXO.21",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "21",
+      "reference": "Exodus 21"
+    },
+    {
+      "id": "EXO.22",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "22",
+      "reference": "Exodus 22"
+    },
+    {
+      "id": "EXO.23",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "23",
+      "reference": "Exodus 23"
+    },
+    {
+      "id": "EXO.24",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "24",
+      "reference": "Exodus 24"
+    },
+    {
+      "id": "EXO.25",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "25",
+      "reference": "Exodus 25"
+    },
+    {
+      "id": "EXO.26",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "26",
+      "reference": "Exodus 26"
+    },
+    {
+      "id": "EXO.27",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "27",
+      "reference": "Exodus 27"
+    },
+    {
+      "id": "EXO.28",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "28",
+      "reference": "Exodus 28"
+    },
+    {
+      "id": "EXO.29",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "29",
+      "reference": "Exodus 29"
+    },
+    {
+      "id": "EXO.30",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "30",
+      "reference": "Exodus 30"
+    },
+    {
+      "id": "EXO.31",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "31",
+      "reference": "Exodus 31"
+    },
+    {
+      "id": "EXO.32",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "32",
+      "reference": "Exodus 32"
+    },
+    {
+      "id": "EXO.33",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "33",
+      "reference": "Exodus 33"
+    },
+    {
+      "id": "EXO.34",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "34",
+      "reference": "Exodus 34"
+    },
+    {
+      "id": "EXO.35",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "35",
+      "reference": "Exodus 35"
+    },
+    {
+      "id": "EXO.36",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "36",
+      "reference": "Exodus 36"
+    },
+    {
+      "id": "EXO.37",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "37",
+      "reference": "Exodus 37"
+    },
+    {
+      "id": "EXO.38",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "38",
+      "reference": "Exodus 38"
+    },
+    {
+      "id": "EXO.39",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "39",
+      "reference": "Exodus 39"
+    },
+    {
+      "id": "EXO.40",
+      "bibleId": "de4e12af7f28f599-01",
+      "bookId": "EXO",
+      "number": "40",
+      "reference": "Exodus 40"
+    }
+  ]
+}

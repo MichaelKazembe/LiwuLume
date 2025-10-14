@@ -24,8 +24,6 @@
         <h1>LiwuLume</h1>
         <ul class="nav-links">
           <li class="active"><a href="#home">Home</a></li>
-          <li><a href="#bible-versions">Bible Versions</a></li>
-          <li><a href="#books">Books</a></li>
           <li><a href="#favorites">Favorites</a></li>
         </ul>
         <div class="search-bar">
@@ -49,77 +47,10 @@
       <button class="button-primary">Start Your Journey</button>
     </section>
 
-    <!-- Bible Versions Section -->
-    <section id="bible-versions">
-      <h2>Choose Your Bible Version</h2>
-      <div id="version-list">
-        <!-- <div class="version-item">
-          <h3>King James Version (KJV)</h3>
-          <p>
-            A classic, revered for its poetic language and historical
-            significance.
-          </p>
-          <button class="button-primary">Select Version</button>
-        </div>
-        <div class="version-item">
-          <h3>New International Version (NIV)</h3>
-          <p>A modern translation that balances readability with accuracy.</p>
-          <button class="button-primary">Select Version</button>
-        </div>
-        <div class="version-item">
-          <h3>English Standard Version (ESV)</h3>
-          <p>A word-for-word translation that is both precise and literary.</p>
-          <button class="button-primary">Select Version</button>
-        </div>
-        <div class="version-item">
-          <h3>New Living Translation (NLT)</h3>
-          <p>
-            A dynamic equivalent for modern readability, making scripture
-            accessible.
-          </p>
-          <button class="button-primary">Select Version</button>
-        </div> -->
-      </div>
-    </section>
-
-    <!-- Books Section -->
-    <section id="books">
-      <h2>Explore the Books of the Bible</h2>
-      <div id="book-list">
-        <!-- Rendered book list dynamically -->
-        <!-- <div class="book-item">
-          <h4>Genesis</h4>
-        </div>
-        <div class="book-item">
-          <h4>Exodus</h4>
-        </div>
-        <div class="book-item">
-          <h4>Leviticus</h4>
-        </div>
-        <div class="book-item">
-          <h4>Numbers</h4>
-        </div>
-        <div class="book-item">
-          <h4>Deuteronomy</h4>
-        </div>
-        <div class="book-item">
-          <h4>Joshua</h4>
-        </div>
-      </div>
-      <div class="view-all"> -->
-        <a id="view-all-books" class="button-secondary" >View All Books</a>
-      </div>
-    </section>
     <!-- Daily Verse Section -->
     <section id="daily-verse">
       <h2>Daily Inspiration</h2>
       <div class="verse-card">
-        <div class="verse-image">
-          <img
-            src="./src/public/images/daily-verse.jpg"
-            alt="Daily Verse Illustration"
-          />
-        </div>
         <div class="verse-content">
           <div class="verse-header">
             <i class="fas fa-bible verse-icon"></i>
@@ -141,6 +72,44 @@
       </div>
     </section>
 
+<!-- Bible Tabs Section -->
+<section id="bible-tabs">
+  <div class="tabs-header">
+    <div class="tab active" data-version-id="de4e12af7f28f599-02">KJV</div>
+    <div class="tab" data-version-id="9879dbb7cfe39e4d-04">WEB</div>
+    <div class="tab" data-version-id="bba9f40183526463-01">BSB</div>
+    <div class="tab" data-version-id="06125adad2d5898a-01">ASV</div>
+  </div>
+  <div class="tabs-content">
+    <div class="tab-pane active" data-version-id="de4e12af7f28f599-02">
+      <div id="book-list"></div>
+      <div id="chapter-list" style="display: none;"></div>
+      <div id="verse-list" style="display: none;"></div>
+      <div id="verse-content" style="display: none;"></div>
+    </div>
+    <div class="tab-pane" data-version-id="9879dbb7cfe39e4d-04">
+      <div id="book-list"></div>
+      <div id="chapter-list" style="display: none;"></div>
+      <div id="verse-list" style="display: none;"></div>
+      <div id="verse-content" style="display: none;"></div>
+    </div>
+    <div class="tab-pane" data-version-id="bba9f40183526463-01">
+      <div id="book-list"></div>
+      <div id="chapter-list" style="display: none;"></div>
+      <div id="verse-list" style="display: none;"></div>
+      <div id="verse-content" style="display: none;"></div>
+    </div>
+    <div class="tab-pane" data-version-id="06125adad2d5898a-01">
+      <div id="book-list"></div>
+      <div id="chapter-list" style="display: none;"></div>
+      <div id="verse-list" style="display: none;"></div>
+      <div id="verse-content" style="display: none;"></div>
+    </div>
+  </div>
+</section>
+
+
+    <script src="http://cdn.scipture.api.bible/fums/fumsv2.min.js"></script>
     <footer id="footer">
       <p>&copy; 2025 LiwuLume. All rights reserved.</p>
     </footer>
