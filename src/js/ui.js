@@ -7,12 +7,106 @@ import {
   fetchVerse,
   fetchDailyVerse,
 } from './api.js';
+import { addFavorite, removeFavorite, isFavorite } from './favorites.js';
 
 // Global variables to track the current state
 let currentVersionId = 'de4e12af7f28f599-02'; // Default to KJV
 let currentBookId = null;
 let currentChapterId = null;
 let currentVerseId = null;
+
+// Toggle favorite status for a verse
+function toggleFavorite(button, verseData) {
+  const verseId = `${verseData.bookId}.${verseData.chapter}.${verseData.verse}`;
+  const isFav = isFavorite(verseId);
+
+  if (isFav) {
+    removeFavorite(verseId);
+    button.innerHTML = '<i class="far fa-heart"></i>';
+  } else {
+    // Get book name from current context or use bookId
+    const bookName = getBookNameFromId(verseData.bookId) || verseData.bookId;
+    addFavorite({
+      ...verseData,
+      book: bookName,
+    });
+    button.innerHTML = '<i class="fas fa-heart"></i>';
+  }
+}
+
+// Helper function to get book name from ID (simplified)
+function getBookNameFromId(bookId) {
+  // This is a simplified mapping - in a real app you'd have a proper mapping
+  const bookMap = {
+    GEN: 'Genesis',
+    EXO: 'Exodus',
+    LEV: 'Leviticus',
+    NUM: 'Numbers',
+    DEU: 'Deuteronomy',
+    JOS: 'Joshua',
+    JDG: 'Judges',
+    RUT: 'Ruth',
+    '1SA': '1 Samuel',
+    '2SA': '2 Samuel',
+    '1KI': '1 Kings',
+    '2KI': '2 Kings',
+    '1CH': '1 Chronicles',
+    '2CH': '2 Chronicles',
+    EZR: 'Ezra',
+    NEH: 'Nehemiah',
+    EST: 'Esther',
+    JOB: 'Job',
+    PSA: 'Psalms',
+    PRO: 'Proverbs',
+    ECC: 'Ecclesiastes',
+    SNG: 'Song of Solomon',
+    ISA: 'Isaiah',
+    JER: 'Jeremiah',
+    LAM: 'Lamentations',
+    EZK: 'Ezekiel',
+    DAN: 'Daniel',
+    HOS: 'Hosea',
+    JOL: 'Joel',
+    AMO: 'Amos',
+    OBA: 'Obadiah',
+    JON: 'Jonah',
+    MIC: 'Micah',
+    NAM: 'Nahum',
+    HAB: 'Habakkuk',
+    ZEP: 'Zephaniah',
+    HAG: 'Haggai',
+    ZEC: 'Zechariah',
+    MAL: 'Malachi',
+    MAT: 'Matthew',
+    MRK: 'Mark',
+    LUK: 'Luke',
+    JHN: 'John',
+    ACT: 'Acts',
+    ROM: 'Romans',
+    '1CO': '1 Corinthians',
+    '2CO': '2 Corinthians',
+    GAL: 'Galatians',
+    EPH: 'Ephesians',
+    PHP: 'Philippians',
+    COL: 'Colossians',
+    '1TH': '1 Thessalonians',
+    '2TH': '2 Thessalonians',
+    '1TI': '1 Timothy',
+    '2TI': '2 Timothy',
+    TIT: 'Titus',
+    PHM: 'Philemon',
+    HEB: 'Hebrews',
+    JAS: 'James',
+    '1PE': '1 Peter',
+    '2PE': '2 Peter',
+    '1JN': '1 John',
+    '2JN': '2 John',
+    '3JN': '3 John',
+    JUD: 'Jude',
+    REV: 'Revelation',
+  };
+  return bookMap[bookId] || bookId;
+}
 
 // Initialize tabs and event listeners
 function initializeTabs() {
@@ -263,8 +357,32 @@ async function renderVerseContent(versionId, verseId, tabPane, chapterContent) {
       verseContentContainer.innerHTML = '<p>Verse not found.</p>';
     }
 
-    // Append back button
-    verseContentContainer.appendChild(backButton);
+    // Create favorite button for individual verse
+    const favoriteButton = document.createElement('button');
+    favoriteButton.className = 'favorite-verse-btn';
+    const verseParts = verseId.split('.');
+    const bookId = verseParts[0];
+    const chapter = verseParts[1];
+    const verse = verseParts[2];
+    const isFav = isFavorite(verseId);
+    favoriteButton.innerHTML = `<i class="fa${isFav ? 's' : 'r'} fa-heart"></i>`;
+    favoriteButton.addEventListener('click', () => {
+      toggleFavorite(favoriteButton, {
+        bookId,
+        chapter,
+        verse,
+        text: verseContentContainer.textContent.trim(),
+        versionId,
+      });
+    });
+
+    // Create actions container
+    const actionsContainer = document.createElement('div');
+    actionsContainer.className = 'verse-actions';
+    actionsContainer.appendChild(favoriteButton);
+    actionsContainer.appendChild(backButton);
+
+    verseContentContainer.appendChild(actionsContainer);
     verseContentElement.appendChild(verseContentContainer);
   } catch (error) {
     console.error('Error rendering verse content:', error);
@@ -300,6 +418,9 @@ async function renderDailyVerse() {
       : 'Verse text not available';
 
     // Update the verse content
+    const verseId = `${dailyVerse.bookId || 'UNK'}.${dailyVerse.chapter || '1'}.${dailyVerse.verse || '1'}`;
+    const isFav = isFavorite(verseId);
+
     verseContent.innerHTML = `
       <div class="verse-header">
         <i class="fas fa-bible verse-icon"></i>
@@ -308,14 +429,29 @@ async function renderDailyVerse() {
       </div>
       <blockquote class="verse-text">${formattedText}</blockquote>
       <div class="verse-actions">
-        <div class="save-verse">
-          <i class="far fa-heart"></i>
-        </div>
+        <button class="save-verse" data-verse-id="${verseId}">
+          <i class="fa${isFav ? 's' : 'r'} fa-heart"></i>
+        </button>
         <a id="read-full-chapter" class="button-secondary">
           <i class="fas fa-book"></i> Read Full Chapter
         </a>
       </div>
     `;
+
+    // Add event listener to the favorite button
+    const saveVerseBtn = verseContent.querySelector('.save-verse');
+    if (saveVerseBtn) {
+      saveVerseBtn.addEventListener('click', () => {
+        toggleFavorite(saveVerseBtn, {
+          bookId: dailyVerse.bookId || 'UNK',
+          book: dailyVerse.book || 'Unknown Book',
+          chapter: dailyVerse.chapter || '1',
+          verse: dailyVerse.verse || '1',
+          text: formattedText,
+          versionId: 'daily', // Special identifier for daily verses
+        });
+      });
+    }
 
     // Add click event to "Read Full Chapter" button
     const readFullChapterBtn = verseCard.querySelector('#read-full-chapter');

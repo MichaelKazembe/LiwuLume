@@ -595,6 +595,157 @@ section {
   color: #d32f2f;
 }
 
+/* Favorites Page Styles */
+#favorites-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.favorite-card {
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid var(--bg-alt);
+}
+
+.favorite-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.favorite-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.favorite-book {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 1.1rem;
+}
+
+.favorite-reference {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+}
+
+.remove-favorite {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.remove-favorite:hover {
+  background-color: #ffeaea;
+  color: #d32f2f;
+  transform: scale(1.1);
+}
+
+.favorite-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 1rem 0;
+  font-style: italic;
+  border-left: 4px solid var(--accent-color);
+  padding-left: 1rem;
+}
+
+.favorite-actions {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.no-favorites {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #666;
+}
+
+.no-favorites i {
+  font-size: 4rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.no-favorites h3 {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.no-favorites p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Heart Icon Styles */
+.favorite-verse-btn,
+.save-verse {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.favorite-verse-btn:hover,
+.save-verse:hover {
+  transform: scale(1.2);
+}
+
+.favorite-verse-btn i,
+.save-verse i {
+  transition: all 0.3s ease;
+}
+
+.favorite-verse-btn i.fas,
+.save-verse i.fas {
+  color: var(--accent-color);
+}
+
+.favorite-verse-btn i.far,
+.save-verse i.far {
+  color: #ccc;
+}
+
+.favorite-verse-btn i.far:hover,
+.save-verse i.far:hover {
+  color: var(--accent-color);
+}
+
+/* Verse Actions Container */
+.verse-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   #nav {
@@ -624,5 +775,25 @@ section {
   .tab {
     padding: 0.75rem;
     font-size: 0.85rem;
+  }
+
+  .favorites-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .favorite-card {
+    padding: 1rem;
+  }
+
+  .favorite-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .verse-actions {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
