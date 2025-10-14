@@ -1,0 +1,208 @@
+// CHAPTER VERSES
+// Gets an array of Verse objects for a given bibleId and chapterId
+// /v1/bibles/{bibleId}/chapters/{chapterId}/verses
+// https://api.biblia.com/v1/bibles/de4e12af7f28f599-01/EXO.2/verses
+{
+  "data": [
+    {
+      "id": "EXO.2.1",
+      "orgId": "EXO.2.1",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:1"
+    },
+    {
+      "id": "EXO.2.2",
+      "orgId": "EXO.2.2",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:2"
+    },
+    {
+      "id": "EXO.2.3",
+      "orgId": "EXO.2.3",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:3"
+    },
+    {
+      "id": "EXO.2.4",
+      "orgId": "EXO.2.4",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:4"
+    },
+    {
+      "id": "EXO.2.5",
+      "orgId": "EXO.2.5",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:5"
+    },
+    {
+      "id": "EXO.2.6",
+      "orgId": "EXO.2.6",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:6"
+    },
+    {
+      "id": "EXO.2.7",
+      "orgId": "EXO.2.7",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:7"
+    },
+    {
+      "id": "EXO.2.8",
+      "orgId": "EXO.2.8",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:8"
+    },
+    {
+      "id": "EXO.2.9",
+      "orgId": "EXO.2.9",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:9"
+    },
+    {
+      "id": "EXO.2.10",
+      "orgId": "EXO.2.10",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:10"
+    },
+    {
+      "id": "EXO.2.11",
+      "orgId": "EXO.2.11",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:11"
+    },
+    {
+      "id": "EXO.2.12",
+      "orgId": "EXO.2.12",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:12"
+    },
+    {
+      "id": "EXO.2.13",
+      "orgId": "EXO.2.13",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:13"
+    },
+    {
+      "id": "EXO.2.14",
+      "orgId": "EXO.2.14",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:14"
+    },
+    {
+      "id": "EXO.2.15",
+      "orgId": "EXO.2.15",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:15"
+    },
+    {
+      "id": "EXO.2.16",
+      "orgId": "EXO.2.16",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:16"
+    },
+    {
+      "id": "EXO.2.17",
+      "orgId": "EXO.2.17",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:17"
+    },
+    {
+      "id": "EXO.2.18",
+      "orgId": "EXO.2.18",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:18"
+    },
+    {
+      "id": "EXO.2.19",
+      "orgId": "EXO.2.19",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:19"
+    },
+    {
+      "id": "EXO.2.20",
+      "orgId": "EXO.2.20",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:20"
+    },
+    {
+      "id": "EXO.2.21",
+      "orgId": "EXO.2.21",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:21"
+    },
+    {
+      "id": "EXO.2.22",
+      "orgId": "EXO.2.22",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:22"
+    },
+    {
+      "id": "EXO.2.23",
+      "orgId": "EXO.2.23",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:23"
+    },
+    {
+      "id": "EXO.2.24",
+      "orgId": "EXO.2.24",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:24"
+    },
+    {
+      "id": "EXO.2.25",
+      "orgId": "EXO.2.25",
+      "bookId": "EXO",
+      "chapterId": "EXO.2",
+      "bibleId": "de4e12af7f28f599-01",
+      "reference": "Exodus 2:25"
+    }
+  ]
+}

@@ -1,21 +1,12 @@
 // api.js
 const BASE_URL = 'https://api.scripture.api.bible/v1/';
-const API_KEY = 'ac1088740a1e4f1b145827d3eeb1e8b3';
-
-// Recommended Bible IDs for LiwuLume
-const RECOMMENDED_BIBLE_IDS = [
-  'de4e12af7f28f599-02', // KJV (Protestant) - Default
-  '9879dbb7cfe39e4d-04', // WEB (Protestant)
-  'bba9f40183526463-01', // BSB (Berean Standard Bible)
-  '06125adad2d5898a-01', // ASV (American Standard Version)
-];
 
 // Fetches a list of available English Bible translations
 async function fetchEnglishTranslations() {
   try {
     const response = await fetch(`${BASE_URL}bibles`, {
       headers: {
-        'api-key': API_KEY,
+        'api-key': 'ac1088740a1e4f1b145827d3eeb1e8b3',
       },
     });
 
@@ -23,30 +14,27 @@ async function fetchEnglishTranslations() {
       throw new Error(`Failed to fetch translations: ${response.status}`);
     }
 
-    const bibleTranslations = await response.json();
-    const translations = bibleTranslations.data;
+    const data = await response.json();
+    const translations = data.data;
 
-    // Filter for English translations
+    // Filter for recommended English translations
+    const recommendedTranslationIds = [
+      'de4e12af7f28f599-02', // KJV (Protestant)
+      '9879dbb7cfe39e4d-04', // WEB (Protestant)
+      'bba9f40183526463-01', // BSB (Berean Standard Bible)
+      '06125adad2d5898a-01', // ASV (American Standard Version)
+    ];
+
     const englishTranslations = translations.filter(
-      (translation) => translation.language.id === 'eng'
+      (translation) =>
+        translation.language.id === 'eng' &&
+        recommendedTranslationIds.includes(translation.id)
     );
 
-    // Filter for recommended translations
-    const recommendedTranslations = englishTranslations.filter((translation) =>
-      RECOMMENDED_BIBLE_IDS.includes(translation.id)
-    );
-
-    // Ensure KJV is first (default)
-    recommendedTranslations.sort((a, b) => {
-      if (a.id === 'de4e12af7f28f599-02') return -1;
-      if (b.id === 'de4e12af7f28f599-02') return 1;
-      return 0;
-    });
-
-    return recommendedTranslations;
+    return englishTranslations;
   } catch (error) {
     console.error('Error fetching translations:', error);
-    return []; // Return empty array on error
+    return [];
   }
 }
 
@@ -55,7 +43,7 @@ async function fetchBooks(versionId) {
   try {
     const response = await fetch(`${BASE_URL}bibles/${versionId}/books`, {
       headers: {
-        'api-key': API_KEY,
+        'api-key': 'ac1088740a1e4f1b145827d3eeb1e8b3',
       },
     });
 
@@ -78,7 +66,7 @@ async function fetchChapters(versionId, bookId) {
       `${BASE_URL}bibles/${versionId}/books/${bookId}/chapters`,
       {
         headers: {
-          'api-key': API_KEY,
+          'api-key': 'ac1088740a1e4f1b145827d3eeb1e8b3',
         },
       }
     );
@@ -95,4 +83,58 @@ async function fetchChapters(versionId, bookId) {
   }
 }
 
-export { fetchEnglishTranslations, fetchBooks, fetchChapters };
+// Fetches a complete chapter with verses
+async function fetchChapterWithVerses(versionId, chapterId) {
+  try {
+    const response = await fetch(
+      `${BASE_URL}bibles/${versionId}/chapters/${chapterId}`,
+      {
+        headers: {
+          'api-key': 'ac1088740a1e4f1b145827d3eeb1e8b3',
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch chapter: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.data; // Chapter object with content property containing all verses
+  } catch (error) {
+    console.error('Error fetching chapter:', error);
+    return null;
+  }
+}
+
+// Fetches a specific verse
+async function fetchVerse(versionId, verseId) {
+  try {
+    const response = await fetch(
+      `${BASE_URL}bibles/${versionId}/verses/${verseId}`,
+      {
+        headers: {
+          'api-key': 'ac1088740a1e4f1b145827d3eeb1e8b3',
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch verse: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.data; // Verse object with content property
+  } catch (error) {
+    console.error('Error fetching verse:', error);
+    return null;
+  }
+}
+
+export {
+  fetchEnglishTranslations,
+  fetchBooks,
+  fetchChapters,
+  fetchChapterWithVerses,
+  fetchVerse,
+};

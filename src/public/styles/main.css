@@ -336,8 +336,8 @@ section {
   padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: var(--border-radius-md);
-  font-size: 1rem;
-  min-width: 300px;
+  font-size: 0.85rem;
+  min-width: 200px;
 }
 
 /* Footer */
@@ -367,4 +367,249 @@ section {
   .search-bar input {
     min-width: 200px;
   }
+}
+
+
+/* Verse Numbers */
+#verse-numbers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.verse-number-item {
+  padding: 0.5rem;
+  background-color: var(--bg-alt);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.verse-number-item:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+/* Verse Content */
+#verse-content {
+  padding: 1rem;
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Bible Tabs */
+#bible-tabs {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.tabs-header {
+  display: flex;
+  border-bottom: 1px solid var(--bg-alt);
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--bg-alt);
+  color: var(--text-color);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.tab.active {
+  color: var(--text-color);
+  background-color: var(--accent-color);
+  font-weight: 600;
+}
+
+.tab-pane {
+  display: none;
+  padding: 1rem;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+#book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.book-item {
+  padding: 1rem;
+  background-color: var(--bg-main);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.book-item:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+#chapter-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.chapter-item {
+  padding: 0.5rem;
+  background-color: var(--bg-main);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.chapter-item:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+#verse-list {
+  padding: 1rem;
+  background-color: var(--bg-main);
+
+  border-radius: var(--border-radius-sm);
+}
+
+.verse-item {
+  color: var(--text-color);
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.verse-item:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+.verse-item.active {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.verse-content-container {
+  padding: 1rem;
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.verse-content-container p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.verse-content-container .v {
+  font-weight: bold;
+  color: var(--accent-color);
+  margin-right: 0.5rem;
+}
+
+.verse-content-container .add {
+  font-style: italic;
+  color: #666;
+}
+
+.back-to-verses {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Add these to your main.css */
+
+/* Verse List */
+#verse-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.verse-item {
+  padding: 0.5rem;
+  background-color: var(--bg-main);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.verse-item:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+/* Verse Content */
+.verse-content-container {
+  padding: 1rem;
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
+}
+
+.verse-content-container p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.verse-content-container .v {
+  font-weight: bold;
+  color: var(--accent-color);
+  margin-right: 0.5rem;
+}
+
+.verse-content-container .add {
+  font-style: italic;
+  color: #666;
+}
+
+.back-to-verses {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Loading and Error States */
+.loading, .error {
+  text-align: center;
+  padding: 1rem;
+  grid-column: 1 / -1;
+}
+
+.loading {
+  color: #666;
+  font-style: italic;
+}
+
+.error {
+  color: #d32f2f;
 }

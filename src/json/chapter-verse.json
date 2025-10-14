@@ -1,0 +1,28 @@
+// CHAPTER VERSE
+// Gets a Verse object for a given bibleId and verseId. This
+// Verse object also includes an content property with the verse corresponding to the verseId.
+// ​/v1​/bibles​/{bibleId}​/verses​/{verseId}
+// https://api.biblia.com/v1/bibles/de4e12af7f28f599-01/verses/EXO.2.1
+
+{
+  "data": {
+    "id": "EXO.2.1",
+    "orgId": "EXO.2.1",
+    "bookId": "EXO",
+    "chapterId": "EXO.2",
+    "bibleId": "de4e12af7f28f599-01",
+    "reference": "Exodus 2:1",
+    "content": "<p class=\"p\"><span data-number=\"1\" data-sid=\"EXO 2:1\" class=\"v\">1</span>And there went a man of the house of Levi, and took <span class=\"add\">to wife</span> a daughter of Levi. </p>",
+    "verseCount": 1,
+    "copyright": "PUBLIC DOMAIN except in the United Kingdom, where a Crown Copyright applies to printing the KJV. See http://www.cambridge.org/about-us/who-we-are/queens-printers-patent",
+    "next": { "id": "EXO.2.2", "number": "2" },
+    "previous": { "id": "EXO.1.22", "number": "22" }
+  },
+  "meta": {
+    "fums": "<script>\nvar _BAPI=_BAPI||{};\nif(typeof(_BAPI.t)==='undefined'){\ndocument.write('\\x3Cscript src=\"'+document.location.protocol+'//cdn.scripture.api.bible/fums/fumsv2.min.js\"\\x3E\\x3C/script\\x3E');}\ndocument.write(\"\\x3Cscript\\x3E_BAPI.t('54f6dedc-336d-4f6d-a12f-d1bc99029098');\\x3C/script\\x3E\");\n</script><noscript><img src=\"https://d3a2okcloueqyx.cloudfront.net/nf1?t='54f6dedc-336d-4f6d-a12f-d1bc99029098'\" height=\"1\" width=\"1\" border=\"0\" alt=\"\" style=\"height: 0; width: 0;\" /></noscript>",
+    "fumsId": "54f6dedc-336d-4f6d-a12f-d1bc99029098",
+    "fumsJsInclude": "cdn.scripture.api.bible/fums/fumsv2.min.js",
+    "fumsJs": "var _BAPI=_BAPI||{};if(typeof(_BAPI.t)!='undefined'){ _BAPI.t('54f6dedc-336d-4f6d-a12f-d1bc99029098'); }",
+    "fumsNoScript": "<img src=\"https://d3btgtzu3ctdwx.cloudfront.net/nf1?t=54f6dedc-336d-4f6d-a12f-d1bc99029098\" height=\"1\" width=\"1\" border=\"0\" alt=\"\" style=\"height: 0; width: 0;\" />"
+  }
+}
