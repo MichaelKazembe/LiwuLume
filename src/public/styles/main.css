@@ -18,6 +18,9 @@
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --border-sm: 1px solid var(--bg-alt);
   --border-md: 2px solid var(--text-color);
+  --animation-duration: 0.3s;
+  --animation-easing: ease;
+  --lift-distance: -5px;
 }
 
 /* Global styles */
@@ -132,8 +135,12 @@ section {
   display: flex;
   max-width: 800px;
   margin: 0 auto;
-  /* Card flip animation */
-  perspective: 1000px;
+  /* Subtle lift animation for better UX */
+  transition: transform var(--animation-duration) var(--animation-easing);
+}
+
+.verse-card:hover {
+  transform: translateY(var(--lift-distance));
 }
 
 .verse-content {
@@ -142,13 +149,6 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  backface-visibility: hidden;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-
-.verse-card:hover .verse-content {
-  transform: rotateY(10deg);
 }
 
 .verse-header {
@@ -196,7 +196,10 @@ section {
   cursor: pointer;
   color: #ccc;
   font-size: 1.2rem;
-  transition: all 0.3s ease;
+  transition: color var(--animation-duration) var(--animation-easing),
+              transform var(--animation-duration) var(--animation-easing);
+  /* Ensure pointer-events are not affected by parent transforms */
+  pointer-events: auto;
 }
 
 .save-verse:hover {
