@@ -200,7 +200,7 @@ section {
     color var(--animation-duration) var(--animation-easing),
     transform var(--animation-duration) var(--animation-easing);
   /* Ensure pointer-events are not affected by parent transforms */
-  pointer-events: auto;
+  /* pointer-events: auto; */
 }
 
 .save-verse:hover {
