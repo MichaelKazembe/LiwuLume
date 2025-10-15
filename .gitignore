@@ -1,5 +1,8 @@
+.cache
+.vscode
+web_modules
 node_modules/
 dist/
 .DS_Store
 .env
-.json
+TODO.md

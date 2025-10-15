@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import { defineConfig, loadEnv } from 'vite';
 
 export default defineConfig(({ command, mode }) => {
@@ -7,6 +8,17 @@ export default defineConfig(({ command, mode }) => {
 
   return {
     // Your Vite configuration options
+    root: 'src', // Set the root to src directory
+
+    build: {
+      outDir: '../dist',
+      rollupOptions: {
+        input: {
+          main: resolve(__dirname, 'src/index.html'),
+          favourite: resolve(__dirname, 'src/pages/favourite.html'),
+        },
+      },
+    },
     define: {
       __APP_ENV__: JSON.stringify(env.APP_ENV), // Example of using a non-VITE_ prefixed variable
     },

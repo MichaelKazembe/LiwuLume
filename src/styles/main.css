@@ -196,8 +196,9 @@ section {
   cursor: pointer;
   color: #ccc;
   font-size: 1.2rem;
-  transition: color var(--animation-duration) var(--animation-easing),
-              transform var(--animation-duration) var(--animation-easing);
+  transition:
+    color var(--animation-duration) var(--animation-easing),
+    transform var(--animation-duration) var(--animation-easing);
   /* Ensure pointer-events are not affected by parent transforms */
   pointer-events: auto;
 }

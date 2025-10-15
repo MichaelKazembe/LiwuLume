@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --emptyOutDir",
     "preview": "vite preview",
     "lint": "eslint . --ext .js --max-warnings=0",
-    "format": "prettier --write .",
+    "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\"",
     "format:check": "prettier --check ."
   },
   "devDependencies": {
