@@ -2,6 +2,11 @@
 const BASE_URL = 'https://api.scripture.api.bible/v1/';
 const API_KEY = import.meta.env.VITE_API_KEY;
 
+// Handle missing API key gracefully without user-facing messages
+if (!API_KEY) {
+  console.warn('Bible API key not configured. Some features may not work.');
+}
+
 // Fetches a random daily verse
 async function fetchDailyVerse() {
   try {
@@ -15,12 +20,18 @@ async function fetchDailyVerse() {
     return data.random_verse;
   } catch (error) {
     console.error('Error fetching daily verse:', error);
-    return null;
+    throw new Error(
+      'Unable to load daily verse. Please check your internet connection.'
+    );
   }
 }
 
 // Fetches a list of available English Bible translations
 async function fetchEnglishTranslations() {
+  if (!API_KEY) {
+    throw new Error('API key is missing. Please configure your Bible API key.');
+  }
+
   try {
     const response = await fetch(`${BASE_URL}bibles`, {
       headers: {
@@ -29,6 +40,11 @@ async function fetchEnglishTranslations() {
     });
 
     if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error(
+          'Invalid API key. Please check your Bible API key configuration.'
+        );
+      }
       throw new Error(`Failed to fetch translations: ${response.status}`);
     }
 
@@ -52,12 +68,16 @@ async function fetchEnglishTranslations() {
     return englishTranslations;
   } catch (error) {
     console.error('Error fetching translations:', error);
-    return [];
+    throw error; // Re-throw to let caller handle
   }
 }
 
 // Fetches books for a selected Bible version
 async function fetchBooks(versionId) {
+  if (!API_KEY) {
+    throw new Error('API key is missing. Please configure your Bible API key.');
+  }
+
   try {
     const response = await fetch(`${BASE_URL}bibles/${versionId}/books`, {
       headers: {
@@ -66,6 +86,11 @@ async function fetchBooks(versionId) {
     });
 
     if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error(
+          'Invalid API key. Please check your Bible API key configuration.'
+        );
+      }
       throw new Error(`Failed to fetch books: ${response.status}`);
     }
 
@@ -73,12 +98,16 @@ async function fetchBooks(versionId) {
     return data.data; // Array of book objects
   } catch (error) {
     console.error('Error fetching books:', error);
-    return [];
+    throw error; // Re-throw to let caller handle
   }
 }
 
 // Fetches chapters for a selected book
 async function fetchChapters(versionId, bookId) {
+  if (!API_KEY) {
+    throw new Error('API key is missing. Please configure your Bible API key.');
+  }
+
   try {
     const response = await fetch(
       `${BASE_URL}bibles/${versionId}/books/${bookId}/chapters`,
@@ -90,6 +119,11 @@ async function fetchChapters(versionId, bookId) {
     );
 
     if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error(
+          'Invalid API key. Please check your Bible API key configuration.'
+        );
+      }
       throw new Error(`Failed to fetch chapters: ${response.status}`);
     }
 
@@ -97,12 +131,16 @@ async function fetchChapters(versionId, bookId) {
     return data.data; // Array of chapter objects
   } catch (error) {
     console.error('Error fetching chapters:', error);
-    return [];
+    throw error; // Re-throw to let caller handle
   }
 }
 
 // Fetches a complete chapter with verses
 async function fetchChapterWithVerses(versionId, chapterId) {
+  if (!API_KEY) {
+    throw new Error('API key is missing. Please configure your Bible API key.');
+  }
+
   try {
     const response = await fetch(
       `${BASE_URL}bibles/${versionId}/chapters/${chapterId}`,
@@ -114,6 +152,11 @@ async function fetchChapterWithVerses(versionId, chapterId) {
     );
 
     if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error(
+          'Invalid API key. Please check your Bible API key configuration.'
+        );
+      }
       throw new Error(`Failed to fetch chapter: ${response.status}`);
     }
 
@@ -121,12 +164,16 @@ async function fetchChapterWithVerses(versionId, chapterId) {
     return data.data; // Chapter object with content property containing all verses
   } catch (error) {
     console.error('Error fetching chapter:', error);
-    return null;
+    throw error; // Re-throw to let caller handle
   }
 }
 
 // Fetches a specific verse
 async function fetchVerse(versionId, verseId) {
+  if (!API_KEY) {
+    throw new Error('API key is missing. Please configure your Bible API key.');
+  }
+
   try {
     const response = await fetch(
       `${BASE_URL}bibles/${versionId}/verses/${verseId}`,
@@ -138,6 +185,11 @@ async function fetchVerse(versionId, verseId) {
     );
 
     if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error(
+          'Invalid API key. Please check your Bible API key configuration.'
+        );
+      }
       throw new Error(`Failed to fetch verse: ${response.status}`);
     }
 
@@ -145,7 +197,7 @@ async function fetchVerse(versionId, verseId) {
     return data.data; // Verse object with content property
   } catch (error) {
     console.error('Error fetching verse:', error);
-    return null;
+    throw error; // Re-throw to let caller handle
   }
 }
 
