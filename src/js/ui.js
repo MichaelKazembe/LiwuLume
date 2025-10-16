@@ -14,6 +14,8 @@ let currentVersionId = 'de4e12af7f28f599-02'; // Default to KJV
 let currentBookId = null;
 let currentChapterId = null;
 let currentVerseId = null;
+let currentBookName = null;
+let currentChapterNumber = null;
 
 // Toggle favorite status for a verse
 function toggleFavorite(button, verseData) {
@@ -128,20 +130,28 @@ function initializeTabs() {
         .classList.add('active');
       currentVersionId = versionId;
 
+      // Reset navigation state
+      currentBookId = null;
+      currentBookName = null;
+      currentChapterId = null;
+      currentChapterNumber = null;
+      currentVerseId = null;
+
       // Re-render books for the selected version
       renderBooks(currentVersionId);
+      updateBreadcrumbs();
     });
   });
 
   // Initialize with KJV as the default
   renderBooks(currentVersionId);
   renderDailyVerse(); // Load the daily verse
+  updateBreadcrumbs();
 }
 
 // Render books for the selected version
 async function renderBooks(versionId) {
   try {
-    const books = await fetchBooks(versionId);
     const activeTabPane = document.querySelector('.tab-pane.active');
     const bookListElement = activeTabPane.querySelector('#book-list');
 
@@ -161,7 +171,9 @@ async function renderBooks(versionId) {
     if (verseContentElement) verseContentElement.style.display = 'none';
 
     // Show loading state
-    bookListElement.innerHTML = '<p class="loading">Loading books...</p>';
+    bookListElement.innerHTML = '<p class="loading">Fetching books...</p>';
+
+    const books = await fetchBooks(versionId);
 
     // Render all books
     books.forEach((book) => {
@@ -170,7 +182,9 @@ async function renderBooks(versionId) {
       bookItem.textContent = book.name;
       bookItem.addEventListener('click', async () => {
         currentBookId = book.id;
+        currentBookName = book.name;
         await renderChapters(versionId, book.id, activeTabPane);
+        updateBreadcrumbs();
       });
       bookListElement.appendChild(bookItem);
     });
@@ -180,9 +194,10 @@ async function renderBooks(versionId) {
     if (loadingElement) loadingElement.remove();
   } catch (error) {
     console.error('Error rendering books:', error);
+    const activeTabPane = document.querySelector('.tab-pane.active');
+    const bookListElement = activeTabPane.querySelector('#book-list');
     if (bookListElement) {
-      bookListElement.innerHTML =
-        '<p class="error">Failed to load books. Please try again later.</p>';
+      bookListElement.innerHTML = `<p class="error">${error.message}</p>`;
     }
   }
 }
@@ -190,7 +205,6 @@ async function renderBooks(versionId) {
 // Render chapters for the selected book
 async function renderChapters(versionId, bookId, tabPane) {
   try {
-    const chapters = await fetchChapters(versionId, bookId);
     const chapterListElement = tabPane.querySelector('#chapter-list');
     const bookListElement = tabPane.querySelector('#book-list');
 
@@ -209,7 +223,9 @@ async function renderChapters(versionId, bookId, tabPane) {
     if (verseContentElement) verseContentElement.style.display = 'none';
 
     // Clear existing content and show loading state
-    chapterListElement.innerHTML = '<p class="loading">Loading chapters...</p>';
+    chapterListElement.innerHTML = '<p class="loading">Fetching chapters...</p>';
+
+    const chapters = await fetchChapters(versionId, bookId);
 
     // Filter out introduction chapters (number === "intro")
     const filteredChapters = chapters.filter(
@@ -223,7 +239,9 @@ async function renderChapters(versionId, bookId, tabPane) {
       chapterItem.textContent = `Chapter ${chapter.number}`;
       chapterItem.addEventListener('click', async () => {
         currentChapterId = chapter.id;
+        currentChapterNumber = chapter.number;
         await renderVerses(versionId, chapter.id, tabPane);
+        updateBreadcrumbs();
       });
       chapterListElement.appendChild(chapterItem);
     });
@@ -233,9 +251,9 @@ async function renderChapters(versionId, bookId, tabPane) {
     if (loadingElement) loadingElement.remove();
   } catch (error) {
     console.error('Error rendering chapters:', error);
+    const chapterListElement = tabPane.querySelector('#chapter-list');
     if (chapterListElement) {
-      chapterListElement.innerHTML =
-        '<p class="error">Failed to load chapters. Please try again later.</p>';
+      chapterListElement.innerHTML = `<p class="error">${error.message}</p>`;
     }
   }
 }
@@ -243,7 +261,6 @@ async function renderChapters(versionId, bookId, tabPane) {
 // Render verses for the selected chapter
 async function renderVerses(versionId, chapterId, tabPane) {
   try {
-    const chapter = await fetchChapterWithVerses(versionId, chapterId);
     const verseListElement = tabPane.querySelector('#verse-list');
     const chapterListElement = tabPane.querySelector('#chapter-list');
 
@@ -260,7 +277,9 @@ async function renderVerses(versionId, chapterId, tabPane) {
     if (verseContentElement) verseContentElement.style.display = 'none';
 
     // Clear existing content and show loading state
-    verseListElement.innerHTML = '<p class="loading">Loading verses...</p>';
+    verseListElement.innerHTML = '<p class="loading">Fetching verses...</p>';
+
+    const chapter = await fetchChapterWithVerses(versionId, chapterId);
 
     // Parse the HTML content to extract verses
     const tempDiv = document.createElement('div');
@@ -277,7 +296,9 @@ async function renderVerses(versionId, chapterId, tabPane) {
       verseItem.addEventListener('click', async () => {
         // Create verse ID (e.g., EXO.2.1)
         const verseId = `${chapter.bookId}.${chapter.number}.${verseNumber}`;
+        currentVerseId = verseId;
         await renderVerseContent(versionId, verseId, tabPane, chapter.content);
+        updateBreadcrumbs();
       });
       verseListElement.appendChild(verseItem);
     });
@@ -287,9 +308,9 @@ async function renderVerses(versionId, chapterId, tabPane) {
     if (loadingElement) loadingElement.remove();
   } catch (error) {
     console.error('Error rendering verses:', error);
+    const verseListElement = tabPane.querySelector('#verse-list');
     if (verseListElement) {
-      verseListElement.innerHTML =
-        '<p class="error">Failed to load verses. Please try again later.</p>';
+      verseListElement.innerHTML = `<p class="error">${error.message}</p>`;
     }
   }
 }
@@ -321,7 +342,9 @@ async function renderVerseContent(versionId, verseId, tabPane, chapterContent) {
     backButton.className = 'back-to-verses button-secondary';
     backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Verses';
     backButton.addEventListener('click', async () => {
+      currentVerseId = null;
       await renderVerses(currentVersionId, currentChapterId, tabPane);
+      updateBreadcrumbs();
     });
 
     // Parse the chapter content to extract the specific verse
@@ -386,9 +409,9 @@ async function renderVerseContent(versionId, verseId, tabPane, chapterContent) {
     verseContentElement.appendChild(verseContentContainer);
   } catch (error) {
     console.error('Error rendering verse content:', error);
+    const verseContentElement = tabPane.querySelector('#verse-content');
     if (verseContentElement) {
-      verseContentElement.innerHTML =
-        '<p class="error">Failed to load verse content. Please try again later.</p>';
+      verseContentElement.innerHTML = `<p class="error">${error.message}</p>`;
     }
   }
 }
@@ -457,16 +480,9 @@ async function renderDailyVerse() {
     const readFullChapterBtn = verseCard.querySelector('#read-full-chapter');
     if (readFullChapterBtn && dailyVerse.bookId) {
       readFullChapterBtn.addEventListener('click', () => {
-        // Find the active tab and render the chapter
-        const activeTab = document.querySelector('.tab.active');
-        if (activeTab) {
-          const versionId = activeTab.getAttribute('data-version-id');
-          renderChapters(
-            versionId,
-            dailyVerse.bookId,
-            document.querySelector('.tab-pane.active')
-          );
-        }
+        // Navigate to the specific verse in the bible section
+        const verseId = `${dailyVerse.bookId}.${dailyVerse.chapter}.${dailyVerse.verse}`;
+        navigateToVerse(verseId);
       });
     }
   } catch (error) {
@@ -491,6 +507,151 @@ async function renderDailyVerse() {
     }
   }
 }
+
+// Update breadcrumb navigation
+function updateBreadcrumbs() {
+  const breadcrumbContainer = document.querySelector('.breadcrumb-container');
+  if (!breadcrumbContainer) return;
+
+  let breadcrumbs = [];
+
+  // Get current version name
+  const activeTab = document.querySelector('.tab.active');
+  if (activeTab) {
+    breadcrumbs.push({
+      text: activeTab.textContent.trim(),
+      level: 'version'
+    });
+  }
+
+  // Add book if selected
+  if (currentBookName) {
+    breadcrumbs.push({
+      text: currentBookName,
+      level: 'book'
+    });
+  }
+
+  // Add chapter if selected
+  if (currentChapterNumber) {
+    breadcrumbs.push({
+      text: `Chapter ${currentChapterNumber}`,
+      level: 'chapter'
+    });
+  }
+
+  // Add verse if selected
+  if (currentVerseId) {
+    const verseNumber = currentVerseId.split('.').pop();
+    breadcrumbs.push({
+      text: `Verse ${verseNumber}`,
+      level: 'verse'
+    });
+  }
+
+  // Render breadcrumbs with click handlers
+  breadcrumbContainer.innerHTML = breadcrumbs.map((crumb, index) => {
+    if (index === breadcrumbs.length - 1) {
+      return `<span class="breadcrumb-current">${crumb.text}</span>`;
+    }
+    return `<button class="breadcrumb-item clickable" data-level="${crumb.level}">${crumb.text}</button><span class="breadcrumb-separator"> > </span>`;
+  }).join('');
+
+  // Add click event listeners to breadcrumb items
+  const clickableBreadcrumbs = breadcrumbContainer.querySelectorAll('.breadcrumb-item.clickable');
+  clickableBreadcrumbs.forEach((breadcrumb, index) => {
+    breadcrumb.addEventListener('click', () => {
+      navigateToBreadcrumbLevel(breadcrumbs[index].level);
+    });
+  });
+}
+
+// Navigate to a specific breadcrumb level
+function navigateToBreadcrumbLevel(level) {
+  const activeTabPane = document.querySelector('.tab-pane.active');
+
+  switch (level) {
+    case 'version':
+      // Reset to books view
+      currentBookId = null;
+      currentBookName = null;
+      currentChapterId = null;
+      currentChapterNumber = null;
+      currentVerseId = null;
+      renderBooks(currentVersionId);
+      break;
+
+    case 'book':
+      // Go back to chapters view
+      currentChapterId = null;
+      currentChapterNumber = null;
+      currentVerseId = null;
+      renderChapters(currentVersionId, currentBookId, activeTabPane);
+      break;
+
+    case 'chapter':
+      // Go back to verses view
+      currentVerseId = null;
+      renderVerses(currentVersionId, currentChapterId, activeTabPane);
+      break;
+  }
+
+  updateBreadcrumbs();
+}
+
+// Navigate to a specific verse in the bible section
+function navigateToVerse(verseId) {
+  const [bookId, chapter, verse] = verseId.split('.');
+
+  // Switch to KJV tab (default version)
+  const kjvTab = document.querySelector(
+    '.tab[data-version-id="de4e12af7f28f599-02"]'
+  );
+  if (kjvTab) {
+    kjvTab.click();
+  }
+
+  // Wait a bit for the tab switch, then navigate to the verse
+  setTimeout(async () => {
+    const activeTabPane = document.querySelector('.tab-pane.active');
+    if (activeTabPane) {
+      try {
+        // Get book name from ID
+        const books = await fetchBooks('de4e12af7f28f599-02');
+        const book = books.find((b) => b.id === bookId);
+        if (book) {
+          currentBookId = bookId;
+          currentBookName = book.name;
+          await renderChapters('de4e12af7f28f599-02', bookId, activeTabPane);
+
+          // Find and click the specific chapter
+          const chapterItems = activeTabPane.querySelectorAll('.chapter-item');
+          for (const chapterItem of chapterItems) {
+            if (chapterItem.textContent.includes(`Chapter ${chapter}`)) {
+              chapterItem.click();
+
+              // Wait for verses to load, then find and click the specific verse
+              setTimeout(() => {
+                const verseItem = activeTabPane.querySelector(
+                  `.verse-item[data-verse-number="${verse}"]`
+                );
+                if (verseItem) {
+                  verseItem.click();
+                }
+              }, 500);
+              break;
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error navigating to verse:', error);
+      }
+    }
+  }, 200);
+}
+
+// Make navigateToVerse available globally for favorites page
+window.navigateToVerse = navigateToVerse;
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {

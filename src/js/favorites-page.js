@@ -73,8 +73,15 @@ function createFavoriteCard(favorite) {
   const readChapterBtn = card.querySelector('.read-full-chapter');
   if (readChapterBtn) {
     readChapterBtn.addEventListener('click', () => {
-      // Navigate back to home page and scroll to the appropriate chapter
-      window.location.href = `../index.html?book=${favorite.bookId}&chapter=${favorite.chapter}`;
+      // Navigate to the specific verse in the bible section
+      const verseId = `${favorite.bookId}.${favorite.chapter}.1`; // Start with verse 1
+      window.location.href = `../index.html`;
+      // Use a timeout to ensure page loads before navigating
+      setTimeout(() => {
+        if (window.navigateToVerse) {
+          window.navigateToVerse(verseId);
+        }
+      }, 1000);
     });
   }
 

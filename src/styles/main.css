@@ -381,6 +381,44 @@ section {
   font-size: 0.875rem;
 }
 
+/* Breadcrumb Navigation */
+.breadcrumb-container {
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-alt);
+  border-bottom: 1px solid #ddd;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.breadcrumb-item {
+  color: #666;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.breadcrumb-item.clickable {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.breadcrumb-item.clickable:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-current {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.breadcrumb-separator {
+  margin: 0 0.5rem;
+  color: #999;
+}
+
 /* Bible Tabs - With animation */
 #bible-tabs {
   max-width: 1200px;
@@ -674,6 +712,17 @@ section {
   font-style: italic;
   border-left: 4px solid var(--accent-color);
   padding-left: 1rem;
+}
+
+.favorite-text .v {
+  font-weight: bold;
+  color: var(--accent-color);
+  margin-right: 0.5rem;
+}
+
+.favorite-text .add {
+  font-style: italic;
+  color: #666;
 }
 
 .favorite-actions {
