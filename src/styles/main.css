@@ -496,7 +496,7 @@ section {
 
 #book-list {
   display: grid;
-  grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 1rem;
   margin-bottom: 1rem;
 }
@@ -526,7 +526,7 @@ section {
 
 #chapter-list {
   display: grid;
-  grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
@@ -549,7 +549,7 @@ section {
 
 #verse-list {
   display: grid;
-  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
